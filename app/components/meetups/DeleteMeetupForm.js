@@ -1,14 +1,10 @@
 import { remove } from "@/app/actions"
 
-export default function DeleteMeetupForm(props) {
-  async function deleteMeetup(formData) {
-    "use server"
-    await remove(formData)
-  }
+export default function DeleteMeetupForm({ id }) {
   return (
     <>
-      <form action={deleteMeetup}>
-        <input type="hidden" name="id" defaultValue={props.id} />
+      <form action={remove}>
+        <input type="hidden" name="id" defaultValue={id} />
         <button>Delete</button>
       </form>
     </>

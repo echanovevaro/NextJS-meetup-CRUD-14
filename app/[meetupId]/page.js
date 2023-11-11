@@ -1,28 +1,17 @@
-import Head from "next/head"
-import { Fragment } from "react"
 import MeetupDetails from "../components/meetups/MeetupDetails"
-import { MongoClient, ObjectId } from "mongodb"
 
 export async function MeetupDetailsPage({ params }) {
   const { meetupId } = params
-  const client = await MongoClient.connect(
-    "mongodb+srv://meetupsAdmin:trewqMN9876@clustervaro.13obq.mongodb.net/?retryWrites=true&w=majority"
-  )
-  const db = client.db("meetups")
-  const collection = db.collection("meetups")
-  const meetup = await collection?.findOne({ _id: new ObjectId(meetupId) })
-  client.close()
+  const data = await getOne(meetupId)
 
   return (
-    <Fragment>
-      <MeetupDetails
-        id={meetup._id.toString()}
-        image={meetup.image}
-        title={meetup.title}
-        address={meetup.address}
-        description={meetup.description}
-      />
-    </Fragment>
+    <MeetupDetails
+      id={data.id}
+      image={data.image}
+      title={data.title}
+      address={data.address}
+      description={data.description}
+    />
   )
 }
 

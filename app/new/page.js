@@ -1,7 +1,5 @@
 import NewMeetupForm from "../components/meetups/NewMeetupForm"
 
-function NewMeetupPage() {
+export default function NewMeetupPage() {
   return <NewMeetupForm />
 }
-
-export default NewMeetupPage

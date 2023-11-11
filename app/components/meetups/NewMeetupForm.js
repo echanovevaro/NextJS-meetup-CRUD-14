@@ -2,27 +2,11 @@ import Card from "../ui/Card"
 import classes from "./NewMeetupForm.module.css"
 import { create, update } from "@/app/actions"
 
-function NewMeetupForm(props) {
-  async function createMeetup(formData) {
-    "use server"
-    await create(formData)
-  }
-
-  async function updateMeetup(formData) {
-    "use server"
-    await update(formData)
-  }
+function NewMeetupForm({ meetup }) {
   return (
     <Card>
-      <form
-        className={classes.form}
-        action={props.meetup ? updateMeetup : createMeetup}
-      >
-        <input
-          type="hidden"
-          name="id"
-          defaultValue={props.meetup ? props.meetup.id : ""}
-        />
+      <form className={classes.form} action={meetup ? update : create}>
+        <input type="hidden" name="id" defaultValue={meetup ? meetup.id : ""} />
         <div className={classes.control}>
           <label htmlFor="title">Meetup Title</label>
           <input
@@ -30,7 +14,7 @@ function NewMeetupForm(props) {
             required
             id="title"
             name="title"
-            defaultValue={props.meetup ? props.meetup.title : ""}
+            defaultValue={meetup ? meetup.title : ""}
           />
         </div>
         <div className={classes.control}>
@@ -40,7 +24,7 @@ function NewMeetupForm(props) {
             required
             id="image"
             name="image"
-            defaultValue={props.meetup ? props.meetup.image : ""}
+            defaultValue={meetup ? meetup.image : ""}
           />
         </div>
         <div className={classes.control}>
@@ -50,7 +34,7 @@ function NewMeetupForm(props) {
             required
             id="address"
             name="address"
-            defaultValue={props.meetup ? props.meetup.address : ""}
+            defaultValue={meetup ? meetup.address : ""}
           />
         </div>
         <div className={classes.control}>
@@ -60,7 +44,7 @@ function NewMeetupForm(props) {
             required
             rows="5"
             name="description"
-            defaultValue={props.meetup ? props.meetup.description : ""}
+            defaultValue={meetup ? meetup.description : ""}
           ></textarea>
         </div>
 
