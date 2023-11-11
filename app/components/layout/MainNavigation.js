@@ -14,7 +14,6 @@ const links = [
 
 export default function MainNavigation() {
   const pathname = usePathname()
-  console.log(pathname)
   return (
     <header className={classes.header}>
       <div className={classes.logo}>React Meetups</div>
@@ -25,6 +24,7 @@ export default function MainNavigation() {
               <li key={name}>
                 <Link
                   href={href}
+                  prefetch={href !== "/"}
                   className={pathname === href ? classes.active : ""}
                 >
                   {name}
