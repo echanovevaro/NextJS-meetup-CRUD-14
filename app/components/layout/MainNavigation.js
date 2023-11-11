@@ -20,17 +20,18 @@ export default function MainNavigation() {
       <div className={classes.logo}>React Meetups</div>
       <nav>
         <ul>
-          {links.map(({ name, href }) => (
-            <li key={name}>
-              <Link
-                href={href}
-                prefetch={href !== "/"}
-                className={pathname === href ? classes.active : ""}
-              >
-                {name}
-              </Link>
-            </li>
-          ))}
+          {links.map(({ name, href }) => {
+            return (
+              <li key={name}>
+                <Link
+                  href={href}
+                  className={pathname === href ? classes.active : ""}
+                >
+                  {name}
+                </Link>
+              </li>
+            )
+          })}
         </ul>
       </nav>
     </header>
