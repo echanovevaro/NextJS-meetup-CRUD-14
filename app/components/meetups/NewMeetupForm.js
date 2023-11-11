@@ -49,7 +49,7 @@ function NewMeetupForm({ meetup }) {
         </div>
 
         <div className={classes.actions}>
-          <button>Save</button>
+          <button>{meetup ? "Update" : "Create"}</button>
         </div>
       </form>
     </Card>

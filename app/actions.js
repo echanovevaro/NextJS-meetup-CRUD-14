@@ -2,20 +2,19 @@ import { MongoClient, ObjectId } from "mongodb"
 import { revalidatePath } from "next/cache"
 import { redirect } from "next/navigation"
 
-async function connect() {
-  const client = await MongoClient.connect(
-    "mongodb+srv://meetupsAdmin:trewqMN9876@clustervaro.13obq.mongodb.net/?retryWrites=true&w=majority"
-  )
+const { MONGO_CONNECTION_CHAIN, MONGO_DATABASE } = process.env
+const MONGO_COLLECTION_MEETUPS = "meetups"
 
-  const database = client.db("meetups")
-
-  const collection = database.collection("meetups")
+async function connect(collectionName) {
+  const client = await MongoClient.connect(MONGO_CONNECTION_CHAIN)
+  const database = client.db(MONGO_DATABASE)
+  const collection = database.collection(collectionName)
 
   return [collection, client]
 }
 
 export async function getAll() {
-  const [collection, client] = await connect()
+  const [collection, client] = await connect(MONGO_COLLECTION_MEETUPS)
   const data = (await collection.find().toArray()).map((meetup) => ({
     id: meetup._id.toString(),
     title: meetup.title,
@@ -28,7 +27,7 @@ export async function getAll() {
 }
 
 export async function getOne(id) {
-  const [collection, client] = await connect()
+  const [collection, client] = await connect(MONGO_COLLECTION_MEETUPS)
   const data = await collection.findOne({ _id: new ObjectId(id) })
   client.close()
   return {
@@ -42,8 +41,8 @@ export async function getOne(id) {
 
 export async function create(formData) {
   "use server"
-  const [collection, client] = await connect()
-  const result = await collection.insertOne({
+  const [collection, client] = await connect(MONGO_COLLECTION_MEETUPS)
+  await collection.insertOne({
     title: formData.get("title"),
     image: formData.get("image"),
     address: formData.get("address"),
@@ -56,9 +55,10 @@ export async function create(formData) {
 
 export async function update(formData) {
   "use server"
-  const [collection, client] = await connect()
-  const result = await collection.findOneAndUpdate(
-    { _id: new ObjectId(formData.get("id")) },
+  const [collection, client] = await connect(MONGO_COLLECTION_MEETUPS)
+  const id = formData.get("id")
+  await collection.findOneAndUpdate(
+    { _id: new ObjectId(id) },
     {
       $set: {
         title: formData.get("title"),
@@ -70,13 +70,13 @@ export async function update(formData) {
   )
   client.close()
   revalidatePath("/")
-  redirect("/")
+  redirect(`/${id}`)
 }
 
 export async function remove(formData) {
   "use server"
-  const [collection, client] = await connect()
-  const result = await collection.findOneAndDelete({
+  const [collection, client] = await connect(MONGO_COLLECTION_MEETUPS)
+  await collection.findOneAndDelete({
     _id: new ObjectId(formData.get("id")),
   })
   client.close()
