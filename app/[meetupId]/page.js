@@ -1,3 +1,4 @@
+import { getOne } from "../actions"
 import MeetupDetails from "../components/meetups/MeetupDetails"
 
 export async function MeetupDetailsPage({ params }) {
