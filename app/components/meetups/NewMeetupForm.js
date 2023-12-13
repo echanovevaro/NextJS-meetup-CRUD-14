@@ -1,6 +1,8 @@
+'use client'
+
 import Card from "../ui/Card"
 import classes from "./NewMeetupForm.module.css"
-import { create, update } from "@/app/actions"
+import { create, update } from "@/app/services/actions"
 
 function NewMeetupForm({ meetup }) {
   return (

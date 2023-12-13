@@ -1,4 +1,4 @@
-import { remove } from "@/app/actions"
+import { remove } from "@/app/services/actions"
 
 export default function DeleteMeetupForm({ id }) {
   return (

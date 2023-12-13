@@ -1,9 +1,23 @@
+'use client'
+
 import classes from "./MeetupItem.module.css"
 import Card from "../ui/Card"
 import NavigationButton from "../ui/NavigationButton"
 import DeleteMeetupForm from "./DeleteMeetupForm"
+// import { getOne } from "@/app/services/loaders"
+import useMeetupsStore from "@/src/store"
+import { useEffect } from "react"
 
-function MeetupDetails(props) {
+export default function MeetupDetails(props) {
+  useEffect(() => {
+    useMeetupsStore.persist.rehydrate();
+  }, [])
+  console.log('MeetupDetails', props)
+  let meetup = useMeetupsStore.getState().meetup
+  console.log('MeetupDetails', useMeetupsStore.getState())
+  // if(!meetup?.id){
+  //   meetup = await getOne(props.meetupId)
+  // }
   return (
     <Card>
       <div className={classes.image}>
@@ -16,7 +30,7 @@ function MeetupDetails(props) {
         <div className={`${classes.actions} flex gap-2 justify-center`}>
           <DeleteMeetupForm id={props.id} />
           <NavigationButton path={`/${props.id}/update`}>
-            Update
+            <button>Update</button>
           </NavigationButton>
         </div>
       </div>
@@ -24,4 +38,3 @@ function MeetupDetails(props) {
   )
 }
 
-export default MeetupDetails
