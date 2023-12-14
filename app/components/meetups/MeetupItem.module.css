@@ -31,16 +31,3 @@
   background-color: var(--orange-web);
   color: var(--white);
 }
-
-.carousel {
-  width: 900px;
-  height: 500px;
-  margin: auto;
-}
-
-@media (max-width: 900px) {
-  .carousel {
-    width: auto;
-    height: auto;
-  }
-}
