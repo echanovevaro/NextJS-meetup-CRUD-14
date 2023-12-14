@@ -6,6 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import classes from "./Landing.module.css"
 import Link from "next/link"
 import NewMeetupForm from "./NewMeetupForm"
+import MeetupList from "./MeetupList"
 
 export default function Landing({ meetups }) {
   console.log(meetups)
@@ -24,9 +25,11 @@ export default function Landing({ meetups }) {
               fluid
               className={classes.carouselImg}
             />
-            <Carousel.Caption className={classes.caption}>
-              <h3>{meetups[0]?.title}</h3>
-              <p>{meetups[0]?.address}</p>
+            <Carousel.Caption>
+              <div className={classes.caption}>
+                <h3>{meetups[0]?.title}</h3>
+                <p>{meetups[0]?.address}</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -40,18 +43,21 @@ export default function Landing({ meetups }) {
               fluid
               className={classes.carouselImg}
             />
-            <Carousel.Caption className={classes.caption}>
-              <h3>{meetups[1]?.title}</h3>
-              <p>{meetups[1]?.address}</p>
+            <Carousel.Caption>
+              <div className={classes.caption}>
+                <h3>{meetups[1]?.title}</h3>
+                <p>{meetups[1]?.address}</p>
+              </div>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </div>
       <div className={classes.formContainer}>
+        <h1 className="m-4 mt-5 text-center display-6">Our meetups</h1>
         <div className={classes.formContent}>
-          <h5 className="mt-5 text-center">Publish your meetup</h5>
-          <p className="text-center">Are you aware of a new meetup? Share with us!</p>
-          <NewMeetupForm />
+          <MeetupList meetups={meetups} />
+          {/* <p className="text-center">Are you aware of a new meetup? Share with us!</p>
+          <NewMeetupForm /> */}
         </div>
       </div>
     </>

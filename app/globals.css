@@ -20,15 +20,16 @@
 body {
   color: var(--white);
   background: radial-gradient(
-    50% 50% at top left,
+    100% 100% at top left,
     rgba(0, 0, 0, 0.66),
-    #262626
+    #000000
   );
 
   min-height: 100vh;
 }
 
-.form-control, .form-floating>.form-control:not(:placeholder-shown)~label::after{
+.form-control,
+.form-floating > .form-control:not(:placeholder-shown) ~ label::after {
   background-color: var(--platinum) !important;
   border-radius: 2px !important;
 }
