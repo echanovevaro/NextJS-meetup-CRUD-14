@@ -30,7 +30,7 @@ export default function Landing({ meetups }) {
             <Carousel.Caption>
               <div className={classes.caption}>
                 <h3>{meetups[0]?.title}</h3>
-                <p><FontAwesomeIcon icon={faLocationDot} /> {meetups[0]?.address}</p>
+                <p className={classes.description}>{meetups[0].description}</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
@@ -48,7 +48,7 @@ export default function Landing({ meetups }) {
             <Carousel.Caption>
               <div className={classes.caption}>
                 <h3>{meetups[1]?.title}</h3>
-                <p><FontAwesomeIcon icon={faLocationDot} /> {meetups[1]?.address}</p>
+                 <p className={classes.description}>{meetups[1].description}</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>

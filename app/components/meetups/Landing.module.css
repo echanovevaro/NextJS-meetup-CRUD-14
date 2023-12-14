@@ -34,3 +34,8 @@
 .formContent {
   width: 80%;
 }
+
+.description {
+    max-height: 50px;
+    -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
+  }
