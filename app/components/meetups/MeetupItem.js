@@ -4,22 +4,25 @@ import classes from "./MeetupItem.module.css"
 
 export default function MeetupItem(props) {
   return (
-    <li className={classes.item}>
-      <Card>
-        <div className={classes.image}>
-          <img src={props.image} alt={props.title} />
-        </div>
-        <div className={classes.content}>
-          <h3>{props.title}</h3>
-          <address>{props.address}</address>
-        </div>
-        <div className={classes.actions}>
-          <NavigationButton path={`/${props.id}`} {...props}>
-            <button>Show Details</button>
-          </NavigationButton>
-        </div>
-      </Card>
-    </li>
+    <Card>
+      <div className={classes.image}>
+        <img
+          src={props.image}
+          alt={props.title}
+        />
+      </div>
+      <div className={classes.content}>
+        <h4 className="font-medium text-xl">{props.title}</h4>
+        <small>{props.address}</small>
+      </div>
+      <div className={classes.actions}>
+        <NavigationButton
+          path={`/${props.id}`}
+          {...props}
+        >
+          <button>Show Details</button>
+        </NavigationButton>
+      </div>
+    </Card>
   )
 }
-

@@ -1,13 +1,14 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --black: rgba(0, 0, 0, 1);
+  --oxford-blue: rgba(20, 33, 61, 1);
+  --orange-web: rgba(252, 163, 17, 1);
+  --platinum: rgba(229, 229, 229, 1);
+  --white: rgba(255, 255, 255, 1);
 }
-
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
@@ -17,12 +18,12 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  color: var(--white);
+  background: radial-gradient(
+    100% 100% at top left,
+    rgba(0, 0, 0, 0.66),
+    #262626
+  );
+
   min-height: 100vh;
 }
