@@ -1,6 +1,6 @@
 .carouselImg {
   min-width: 100%;
-  height: 400px;
+  height: 420px;
   object-fit: cover;
   aspect-ratio: 16/9;
   opacity: 0.6;
@@ -14,10 +14,11 @@
 
 .caption {
   background-color: rgba(229, 229, 229, 0.3);
-  padding: 1rem;
-  margin: 0 25%;
+  padding: 0.5rem;
   /* color: var(--orange-web); */
 }
+
+
 
 .formContainer {
   background-color: rgba(252, 163, 17, 1);

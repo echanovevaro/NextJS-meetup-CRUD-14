@@ -7,6 +7,8 @@ import classes from "./Landing.module.css"
 import Link from "next/link"
 import NewMeetupForm from "./NewMeetupForm"
 import MeetupList from "./MeetupList"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 
 export default function Landing({ meetups }) {
   console.log(meetups)
@@ -28,7 +30,7 @@ export default function Landing({ meetups }) {
             <Carousel.Caption>
               <div className={classes.caption}>
                 <h3>{meetups[0]?.title}</h3>
-                <p>{meetups[0]?.address}</p>
+                <p><FontAwesomeIcon icon={faLocationDot} /> {meetups[0]?.address}</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
@@ -46,7 +48,25 @@ export default function Landing({ meetups }) {
             <Carousel.Caption>
               <div className={classes.caption}>
                 <h3>{meetups[1]?.title}</h3>
-                <p>{meetups[1]?.address}</p>
+                <p><FontAwesomeIcon icon={faLocationDot} /> {meetups[1]?.address}</p>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
+          <Carousel.Item>
+            <Link
+              className="stretched-link"
+              href={`/${meetups[2]?.id}`}
+            />
+            <Image
+              src={meetups[2]?.image}
+              alt={meetups[2]?.title}
+              fluid
+              className={classes.carouselImg}
+            />
+            <Carousel.Caption>
+              <div className={classes.caption}>
+                <h3>{meetups[2]?.title}</h3>
+                <p><FontAwesomeIcon icon={faLocationDot} /> {meetups[2]?.address}</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>
