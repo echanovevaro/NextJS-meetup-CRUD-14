@@ -52,6 +52,24 @@ export default function Landing({ meetups }) {
               </div>
             </Carousel.Caption>
           </Carousel.Item>
+          <Carousel.Item>
+            <Link
+              className="stretched-link"
+              href={`/${meetups[2]?.id}`}
+            />
+            <Image
+              src={meetups[2]?.image}
+              alt={meetups[2]?.title}
+              fluid
+              className={classes.carouselImg}
+            />
+            <Carousel.Caption>
+              <div className={classes.caption}>
+                <h3>{meetups[2]?.title}</h3>
+                <p className={classes.description}>{meetups[2].description}</p>
+              </div>
+            </Carousel.Caption>
+          </Carousel.Item>
         </Carousel>
       </div>
       <div className={classes.formContainer}>
