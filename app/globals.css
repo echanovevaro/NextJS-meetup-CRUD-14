@@ -19,7 +19,7 @@
 
 body {
   color: var(--white);
-  background-color: black;
+  background-color: rgba(0, 0, 0, 0.66) !important;
   min-height: 100vh;
 }
 
@@ -40,4 +40,13 @@ body {
   border-radius: 2px !important;
   border: none !important;
   background-color: var(--white) !important;
+}
+
+.carousel-caption {
+  right: 10% !important;
+  left: 10% !important;
+}
+
+.carousel-control-next, .carousel-control-prev {
+  width:10% !important;
 }

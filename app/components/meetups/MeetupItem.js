@@ -36,8 +36,8 @@ function MeetupItem({ meetup }) {
       <Card.ImgOverlay
         className={`${classes.overlay} d-flex justify-content-end align-items-center flex-column`}
       >
-        <Card.Title>{meetup.title}</Card.Title>
-        <Card.Text>{meetup.address}</Card.Text>
+        <Card.Title className="fs-5 fw-light">{meetup.title}</Card.Title>
+        <Card.Text className="fw-lighter">{meetup.address}</Card.Text>
       </Card.ImgOverlay>
       <Link
         href={`/${meetup.id}`}
