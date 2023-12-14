@@ -36,7 +36,7 @@
 
 .header a {
   text-decoration: none;
-  color: var(--orange-web);
+  color: rgb(76, 184, 188);
 }
 
 .header li:hover,
