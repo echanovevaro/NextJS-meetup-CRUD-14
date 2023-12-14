@@ -16,10 +16,15 @@
 
 .formContainer {
   padding-top: 2rem;
-  padding-left: 8rem;
-  width: 100%;
-  margin: 0 auto;
   background-color: rgba(252, 163, 17, 1);
-  height: 300px;
   color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.formContent {
+  width: 80%;
 }

@@ -6,63 +6,58 @@ import { redirect } from "next/navigation"
 import { connectToCollection } from "./utils"
 import { MONGO_COLLECTION_MEETUPS } from "./constants"
 
-export async function create(formData) {
+export async function create(data) {
   "use server"
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
   )
   await collection.insertOne({
-    title: formData.get("title"),
-    image: formData.get("image"),
-    address: formData.get("address"),
-    description: formData.get("description"),
+    title: data.title,
+    image: data.image,
+    address: data.address,
+    description: data.description,
+    date: data.date.toISOString(),
+    time: data.time,
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
   })
   client.close()
   revalidatePath("/")
   redirect("/")
 }
 
-export async function update(formData) {
+export async function update(id, data) {
   "use server"
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
   )
-  const id = formData.get("id")
-  const result = await collection.findOneAndUpdate(
+
+  await collection.findOneAndUpdate(
     { _id: new ObjectId(id) },
     {
       $set: {
-        title: formData.get("title"),
-        image: formData.get("image"),
-        address: formData.get("address"),
-        description: formData.get("description"),
+        title: data.title,
+        image: data.image,
+        address: data.address,
+        description: data.description,
+        date: data.date.toISOString(),
+        time: data.time,
+        updatedAt: new Date().toISOString(),
       },
-    },
-    {
-      new: true,
     }
   )
   client.close()
-  useMeetupsStore.setState({
-    meetup: {
-      id: result._id.toString(),
-      title: result.title,
-      image: result.image,
-      address: result.address,
-      description: result.description,
-    },
-  })
   revalidatePath("/")
   redirect(`/${id}`)
 }
 
-export async function remove(formData) {
+export async function remove(id) {
   "use server"
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
   )
   await collection.findOneAndDelete({
-    _id: new ObjectId(formData.get("id")),
+    _id: new ObjectId(id),
   })
   client.close()
   revalidatePath("/")

@@ -5,6 +5,7 @@ import Image from "react-bootstrap/Image"
 import "bootstrap/dist/css/bootstrap.min.css"
 import classes from "./Landing.module.css"
 import Link from "next/link"
+import NewMeetupForm from "./NewMeetupForm"
 
 export default function Landing({ meetups }) {
   console.log(meetups)
@@ -47,7 +48,10 @@ export default function Landing({ meetups }) {
         </Carousel>
       </div>
       <div className={classes.formContainer}>
-        <hh5>Publish your mettup</hh5>
+        <div className={classes.formContent}>
+          <h5 className="mb-4">Publish your meetup</h5>
+          <NewMeetupForm />
+        </div>
       </div>
     </>
   )
