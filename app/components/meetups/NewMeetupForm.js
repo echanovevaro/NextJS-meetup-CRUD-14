@@ -6,8 +6,6 @@ import { z } from "zod"
 import classes from "./NewMeetupForm.module.css"
 import { create, update } from "@/app/services/actions"
 import { useEffect } from "react"
-import Col from "react-bootstrap/Col"
-import Card from "react-bootstrap/Card"
 import Alert from "react-bootstrap/Alert"
 import FloatingLabel from "react-bootstrap/FloatingLabel"
 import Form from "react-bootstrap/Form"
@@ -18,7 +16,7 @@ import Link from "next/link"
 const meetupSchema = z.object({
   title: z.string().min(10).max(100),
   image: z.string().min(1).url(),
-  datetime: z.string().min(1).datetime(),
+  datetime: z.string().min(1).transform((str) => new Date(str)),
   address: z.string().min(10).max(100),
   description: z.string().min(20).max(500),
 })
@@ -27,6 +25,7 @@ function NewMeetupForm({ meetup }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: zodResolver(meetupSchema),
@@ -49,14 +48,11 @@ function NewMeetupForm({ meetup }) {
     } else {
       create(data)
     }
+    reset();
   }
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <Col
-        xs={12}
-        md={8}
-        lg={6}
-      >
+
         {Object.keys(errors).length > 0 && (
           <Alert
             variant="danger"
@@ -82,7 +78,7 @@ function NewMeetupForm({ meetup }) {
 
         <FloatingLabel
           controlId="floatingAddress"
-          label="Date"
+          label="Adress"
           className="mb-2"
         >
           <Form.Control
@@ -100,7 +96,7 @@ function NewMeetupForm({ meetup }) {
           className="mb-2"
         >
           <Form.Control
-            type="datetime-local"
+            type="datetime"
             {...register("datetime")}
           />
           {errors.datetime && (
@@ -138,24 +134,23 @@ function NewMeetupForm({ meetup }) {
 
         <Stack
           direction="horizontal"
-          className="d-flex justify-content-end gap-0 mb-3 mt-4 input-group-text border-start-0 border-end-0 p-2 pe-3"
+          className="d-flex justify-content-end gap-0 mb-3 mt-4 border-start-0 border-end-0"
         >
           <Button
             as={Link}
             href={`/`}
             variant="link"
-            className="text-grey"
+            className={classes.textWhite}
           >
             Cancel
           </Button>
           <Button
             type="submit"
-            variant="outline-primary"
+            variant="outline-light"
           >
             Submit
           </Button>
         </Stack>
-      </Col>
     </form>
     // <Card>
     //   <form className={classes.form} action={meetup ? update : create}>

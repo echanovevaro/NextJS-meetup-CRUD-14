@@ -20,7 +20,7 @@
 body {
   color: var(--white);
   background: radial-gradient(
-    100% 100% at top left,
+    50% 50% at top left,
     rgba(0, 0, 0, 0.66),
     #262626
   );
@@ -28,29 +28,7 @@ body {
   min-height: 100vh;
 }
 
-.form {
-  padding: 1rem;
-}
-
-.form-control {
-  margin-bottom: 0.5rem;
-}
-
-.form-control label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-}
-
-.form-control {
-  display: block;
-  font: inherit;
-  border-radius: 3px !important;
-  border: 1px solid #ccc;
-  padding: 0.25rem;
-  width: 100%;
-}
-
-.actions {
-  text-align: right;
+.form-control, .form-floating>.form-control:not(:placeholder-shown)~label::after{
+  background-color: var(--platinum) !important;
+  border-radius: 2px !important;
 }

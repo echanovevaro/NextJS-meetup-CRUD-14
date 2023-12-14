@@ -49,7 +49,8 @@ export default function Landing({ meetups }) {
       </div>
       <div className={classes.formContainer}>
         <div className={classes.formContent}>
-          <h5 className="mb-4">Publish your meetup</h5>
+          <h5 className="mt-5 text-center">Publish your meetup</h5>
+          <p className="text-center">Are you aware of a new meetup? Share with us!</p>
           <NewMeetupForm />
         </div>
       </div>

@@ -1,0 +1,10 @@
+
+.textWhite {
+  color: white;
+  text-decoration: none;
+}
+
+.textWhite:hover {
+  color: white;
+  text-decoration: underline;
+}

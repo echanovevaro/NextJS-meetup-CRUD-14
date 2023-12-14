@@ -16,8 +16,7 @@ export async function create(data) {
     image: data.image,
     address: data.address,
     description: data.description,
-    date: data.date.toISOString(),
-    time: data.time,
+    date: data.datetime,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   })

@@ -3,11 +3,13 @@
   height: 300px;
   object-fit: cover;
   aspect-ratio: 16/9;
+  opacity: 0.5;
 }
 
 .carouselContainer {
   width: 80%;
-  margin: 2rem auto;
+  margin: 4rem auto;
+  border: 0.5px solid rgba(229, 229, 229, 0.5);
 }
 
 .caption {
@@ -22,9 +24,10 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 0 auto;
+  border: 0.5px solid rgba(229, 229, 229, 0.5);
 }
 
 .formContent {
   width: 80%;
 }
+

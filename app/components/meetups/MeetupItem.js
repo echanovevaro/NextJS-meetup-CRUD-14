@@ -1,5 +1,5 @@
+import Link from "next/link"
 import Card from "../ui/Card"
-import NavigationButton from "../ui/NavigationButton"
 import classes from "./MeetupItem.module.css"
 
 export default function MeetupItem(props) {
@@ -16,12 +16,7 @@ export default function MeetupItem(props) {
         <small>{props.address}</small>
       </div>
       <div className={classes.actions}>
-        <NavigationButton
-          path={`/${props.id}`}
-          {...props}
-        >
-          <button>Show Details</button>
-        </NavigationButton>
+        <Link href={`/${props.id}`}> Show Details </Link>
       </div>
     </Card>
   )
