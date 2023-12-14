@@ -6,4 +6,5 @@
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   list-style: none;
   gap: 0.8rem;
+  margin-bottom: 2rem;
 }

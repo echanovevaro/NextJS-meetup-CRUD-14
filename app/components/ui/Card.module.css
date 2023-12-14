@@ -1,6 +1,7 @@
 .card {
   background-color: var(--platinum);
   border: 0.5px solid rgba(229, 229, 229, 0.1);
+  max-width: 100px;
 }
 
 .card img {

@@ -7,8 +7,8 @@ import classes from "./Landing.module.css"
 import Link from "next/link"
 import NewMeetupForm from "./NewMeetupForm"
 import MeetupList from "./MeetupList"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
 
 export default function Landing({ meetups }) {
   console.log(meetups)
@@ -48,7 +48,7 @@ export default function Landing({ meetups }) {
             <Carousel.Caption>
               <div className={classes.caption}>
                 <h3>{meetups[1]?.title}</h3>
-                 <p className={classes.description}>{meetups[1].description}</p>
+                <p className={classes.description}>{meetups[1].description}</p>
               </div>
             </Carousel.Caption>
           </Carousel.Item>

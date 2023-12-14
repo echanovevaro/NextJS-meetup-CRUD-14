@@ -9,13 +9,7 @@ function MeetupList({ meetups }) {
     <ul className={classes.list}>
       {meetups.map((meetup) => (
         <li key={meetup.id}>
-          <MeetupItem
-            id={meetup.id}
-            image={meetup.image}
-            title={meetup.title}
-            address={meetup.address}
-            description={meetup.description}
-          />
+          <MeetupItem meetup={meetup} />
         </li>
       ))}
     </ul>
