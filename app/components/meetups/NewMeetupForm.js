@@ -52,6 +52,7 @@ function NewMeetupForm({ meetup }) {
     } else {
       await create(data)
       reset();
+      setIsSubmitting(false);
     }
 
     

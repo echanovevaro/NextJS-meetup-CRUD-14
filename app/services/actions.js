@@ -15,6 +15,7 @@ export async function create(data) {
     title: data.title,
     image: data.image,
     address: data.address,
+    city: data.city,
     description: data.description,
     datetime: data.datetime,
     createdAt: new Date().toISOString(),

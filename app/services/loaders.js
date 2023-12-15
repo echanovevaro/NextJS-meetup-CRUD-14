@@ -7,7 +7,6 @@ export async function getAll() {
     MONGO_COLLECTION_MEETUPS
   )
   const data = await collection.find().toArray()
-  console.log(data)
   const response = []
   data.map((meetup) =>
     response.push({
@@ -30,7 +29,6 @@ export async function getOne(id) {
     MONGO_COLLECTION_MEETUPS
   )
   const data = await collection.findOne({ _id: new ObjectId(id) })
-  console.log(data)
   client.close()
   return {
     id: data._id.toString(),
