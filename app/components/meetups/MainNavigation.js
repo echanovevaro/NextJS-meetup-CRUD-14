@@ -5,14 +5,6 @@ import classes from "./MainNavigation.module.css"
 import { usePathname } from "next/navigation"
 import React from "react" // Add missing import statement
 
-const links = [
-  { name: "Meetups", href: "/meetups" },
-  {
-    name: "Publish one",
-    href: "/new",
-  },
-]
-
 export default function MainNavigation() {
   const pathname = usePathname()
   return (
@@ -24,22 +16,20 @@ export default function MainNavigation() {
         >
           Next 14 Meetups
         </Link>
-        <nav>
-          <ul>
-            {links.map(({ name, href }) => (
-              <li
-                key={name}
-                className="font-light text-sm"
-              >
+        <nav className="d-flex gap-2">
+
                 <Link
-                  href={href}
-                  className={pathname === href ? classes.active : ""}
+                  href="/#meetups"
+                  className={`${pathname === "/#meetups" ? classes.active : ""} `}
                 >
-                  {name}
+                  All meetups
                 </Link>
-              </li>
-            ))}
-          </ul>
+                <Link
+                  href="/#new"
+                  className={`${pathname === "/#new" ? classes.active : ""} `}
+                >
+                  Add new meetup
+                </Link>
         </nav>
       </div>
     </header>

@@ -16,7 +16,7 @@ export async function create(data) {
     image: data.image,
     address: data.address,
     description: data.description,
-    date: data.datetime,
+    datetime: data.datetime,
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
   })
@@ -26,6 +26,7 @@ export async function create(data) {
 }
 
 export async function update(id, data) {
+  console.log('data',data)
   "use server"
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
@@ -39,8 +40,8 @@ export async function update(id, data) {
         image: data.image,
         address: data.address,
         description: data.description,
-        date: data.date.toISOString(),
-        time: data.time,
+        datetime: data.datetime,
+        city: data.city,
         updatedAt: new Date().toISOString(),
       },
     }

@@ -7,16 +7,14 @@ import classes from "./Landing.module.css"
 import Link from "next/link"
 import NewMeetupForm from "./NewMeetupForm"
 import MeetupList from "./MeetupList"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
+
 
 export default function Landing({ meetups }) {
-  console.log(meetups)
   return (
     <>
       <div className={classes.carouselContainer}>
         <Carousel>
-          <Carousel.Item>
+          {meetups?.length > 0 && (<Carousel.Item>
             <Link
               className="stretched-link"
               href={`/${meetups[0]?.id}`}
@@ -29,12 +27,12 @@ export default function Landing({ meetups }) {
             />
             <Carousel.Caption>
               <div className={classes.caption}>
-                <h3>{meetups[0]?.title}</h3>
-                <p className={classes.description}>{meetups[0].description}</p>
+                <h3 className="fw-light">{meetups[0]?.title}</h3>
+                <p className={`${classes.description} fw-lighter`}>{meetups[0].description}</p>
               </div>
             </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
+          </Carousel.Item>)}
+          {meetups?.length > 1 && (<Carousel.Item>
             <Link
               className="stretched-link"
               href={`/${meetups[1]?.id}`}
@@ -47,12 +45,12 @@ export default function Landing({ meetups }) {
             />
             <Carousel.Caption>
               <div className={classes.caption}>
-                <h3>{meetups[1]?.title}</h3>
-                <p className={classes.description}>{meetups[1].description}</p>
+                <h3 className="fw-light">{meetups[1]?.title}</h3>
+                <p className={`${classes.description} fw-lighter`}>{meetups[1].description}</p>
               </div>
             </Carousel.Caption>
-          </Carousel.Item>
-          <Carousel.Item>
+          </Carousel.Item>)}
+          {meetups?.length > 2 && (<Carousel.Item>
             <Link
               className="stretched-link"
               href={`/${meetups[2]?.id}`}
@@ -65,20 +63,24 @@ export default function Landing({ meetups }) {
             />
             <Carousel.Caption>
               <div className={classes.caption}>
-                <h3>{meetups[2]?.title}</h3>
-                <p className={classes.description}>{meetups[2].description}</p>
+                <h3 className="fw-light">{meetups[2]?.title}</h3>
+                <p className={`${classes.description} fw-lighter`}>{meetups[2].description}</p>
               </div>
             </Carousel.Caption>
-          </Carousel.Item>
+          </Carousel.Item>)}
         </Carousel>
       </div>
-      <div className={classes.formContainer}>
-        <h1 className="m-4 mt-5 text-center display-6">Our meetups</h1>
-        <div className={classes.formContent}>
+      <div className={classes.meetupsContainer} id='meetups'>
+        <h1 className='text-blue m-4 mt-5 pt-4 text-center display-6'>Our meetups</h1>
+        <div className={classes.meetupsContent}>
           <MeetupList meetups={meetups} />
-          {/* <p className="text-center">Are you aware of a new meetup? Share with us!</p>
-          <NewMeetupForm /> */}
         </div>
+      </div>
+      <div className={classes.formContainer} id='new'>
+        <h1 className='text-blue m-4 mt-5 pt-4 text-center display-6'>Add a meetup</h1>
+        <p className="fw-lighter text-white">Organizing a new meetup? Share it with us!</p>
+
+          <NewMeetupForm />
       </div>
     </>
   )

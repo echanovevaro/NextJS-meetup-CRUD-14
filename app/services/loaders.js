@@ -15,6 +15,8 @@ export async function getAll() {
       title: meetup.title,
       image: meetup.image,
       address: meetup.address,
+      datetime: meetup.datetime,
+      city: meetup.city,
       description: meetup.description,
     })
   )
@@ -35,6 +37,8 @@ export async function getOne(id) {
     title: data.title,
     image: data.image,
     address: data.address,
+    datetime: data.datetime,
+    city: data.city,
     description: data.description,
   }
 }

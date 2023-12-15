@@ -8,7 +8,7 @@
 .content {
   text-align: center;
   padding: 1rem;
-  color: var(--oxford-blue);
+  color: var(--platinum);
 }
 
 .actions {
@@ -19,8 +19,8 @@
 .actions button {
   font: inherit;
   cursor: pointer;
-  color: var(--orange-web);
-  border: 1px solid var(--orange-web);
+  color: rgb(76, 184, 188);
+  border: 1px solid rgb(76, 184, 188);
   background-color: transparent;
   padding: 0.5rem 1.5rem;
   border-radius: 4px;
@@ -28,7 +28,7 @@
 
 .actions button:hover,
 .actions button:active {
-  background-color: var(--orange-web);
+  background-color: rgb(76, 184, 188);
   color: var(--white);
 }
 
@@ -36,9 +36,17 @@
   background-color: rgba(0, 0, 0, 0.5);
   padding: 0.5rem;
   backdrop-filter: blur(2px);
-  height: fit-content;
   border-radius: 2px;
-  bottom: 0;
+  height: fit-content;
+  bottom: 0%;
   top: unset !important;
-  position: absolute;
+}
+
+a:hover + .overlay {
+  height: 100% !important;
+  top: 0% !important;
+}
+
+a:hover + .overlay>h6 {
+  display: inline;
 }

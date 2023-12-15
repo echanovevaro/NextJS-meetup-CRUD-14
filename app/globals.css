@@ -1,6 +1,6 @@
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
-@tailwind utilities; */
+@tailwind utilities;
 
 :root {
   --black: rgba(0, 0, 0, 1);
@@ -25,7 +25,6 @@ body {
 
 .form-control,
 .form-floating > .form-control:not(:placeholder-shown) ~ label::after {
-  background-color: var(--platinum) !important;
   border-radius: 2px !important;
 }
 
@@ -49,4 +48,31 @@ body {
 
 .carousel-control-next, .carousel-control-prev {
   width:10% !important;
+}
+
+.btn{
+  border-radius: 4px !important;
+}
+
+.form-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-content{
+  width: 80%;
+}
+
+.text-blue{
+  color: rgb(76, 184, 188) !important;
+}
+
+a.text-blue:hover{
+  color: var(--white) !important;
+}
+
+a.text-blue{
+  text-decoration: none;
 }

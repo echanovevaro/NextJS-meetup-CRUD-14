@@ -1,31 +1,15 @@
 import Link from "next/link"
 // import Card from "../ui/Card"
 import classes from "./MeetupItem.module.css"
-
-// export default function MeetupItem(props) {
-//   return (
-//     <Card>
-//       <div className={classes.image}>
-//         <img
-//           src={props.image}
-//           alt={props.title}
-//         />
-//       </div>
-//       <div className={classes.content}>
-//         <h4 className="font-medium text-xl">{props.title}</h4>
-//         <small>{props.address}</small>
-//       </div>
-//       <div className={classes.actions}>
-//         <Link href={`/${props.id}`}> Show Details </Link>
-//       </div>
-//     </Card>
-//   )
-// }
+import moment from 'moment';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons"
+import { faClock } from "@fortawesome/free-regular-svg-icons"
 
 import Card from "react-bootstrap/Card"
-import Button from "react-bootstrap/Button"
 
 function MeetupItem({ meetup }) {
+  const datetime = moment(meetup.datetime).format("YYYY/MM/DD HH:mm")
   return (
     <Card className="text-white">
       <Card.Img
@@ -33,16 +17,25 @@ function MeetupItem({ meetup }) {
         src={meetup.image}
         alt="Card image"
       />
-      <Card.ImgOverlay
-        className={`${classes.overlay} d-flex justify-content-end align-items-center flex-column`}
-      >
-        <Card.Title className="fs-5 fw-light">{meetup.title}</Card.Title>
-        <Card.Text className="fw-lighter">{meetup.address}</Card.Text>
-      </Card.ImgOverlay>
       <Link
         href={`/${meetup.id}`}
         className="stretched-link"
       />
+      <Card.ImgOverlay
+        className={`${classes.overlay} d-flex justify-content-between flex-column`}
+      >
+        <h6 className="text-md fw-light">{meetup.title}</h6>
+        <h6 className="hidden mb-1">
+                  <div className="d-flex justify-content-end align-items-center gap-2">
+          <p className="text-xs fw-lighter text-right m-0 text-blue"><FontAwesomeIcon icon={faLocationDot}/></p>
+        <Card.Text className="text-xs fw-lighter text-right mb-0">{datetime}</Card.Text>
+        </div>
+        <div className="d-flex justify-content-end align-items-center gap-2">
+          <p className="text-xs fw-lighter text-right m-0 text-blue"><FontAwesomeIcon icon={faClock}/></p>
+        <Card.Text className="text-xs fw-lighter text-right mb-0">{meetup.address} {meetup.city}</Card.Text>
+        </div>
+        </h6>
+      </Card.ImgOverlay>
     </Card>
   )
 }

@@ -1,11 +1,11 @@
 "use client"
 
-import { useForm } from "react-hook-form"
+import { useForm, Controller } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
 import classes from "./NewMeetupForm.module.css"
 import { create, update } from "@/app/services/actions"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import Alert from "react-bootstrap/Alert"
 import FloatingLabel from "react-bootstrap/FloatingLabel"
 import Form from "react-bootstrap/Form"
@@ -16,41 +16,48 @@ import Link from "next/link"
 const meetupSchema = z.object({
   title: z.string().min(10).max(100),
   image: z.string().min(1).url(),
-  datetime: z.string().min(1).transform((str) => new Date(str)),
+  datetime: z.string().min(1).transform((str) => new Date(str).toISOString()),
   address: z.string().min(10).max(100),
+  city: z.string().min(10).max(60),
   description: z.string().min(20).max(500),
 })
 
 function NewMeetupForm({ meetup }) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  let defaultDateTime = meetup?.datetime ? new Date(meetup.datetime) : null
+  defaultDateTime?.setHours(defaultDateTime.getHours() + 1)
+
   const {
     register,
     handleSubmit,
     reset,
-    formState: { errors },
+    formState: { errors }
   } = useForm({
     resolver: zodResolver(meetupSchema),
     defaultValues: {
       title: meetup?.title || "",
       image: meetup?.image || "",
-      datetime: meetup?.datetime || "",
+      datetime: defaultDateTime?.toISOString().split('.')[0] || "",
       address: meetup?.address || "",
+      city: meetup?.city || "",
       description: meetup?.description || "",
     },
   })
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" })
-  }, [errors])
+  async function onSubmit(data) {
+    setIsSubmitting(true);
 
-  function onSubmit(data) {
     if (meetup) {
-      update(meetup.id, data)
+      await update(meetup.id, data)
     } else {
-      create(data)
+      await create(data)
+      reset();
     }
-    reset();
+
+    
   }
   return (
+    <div className="form-content">
     <form onSubmit={handleSubmit(onSubmit)}>
 
         {Object.keys(errors).length > 0 && (
@@ -70,6 +77,7 @@ function NewMeetupForm({ meetup }) {
           <Form.Control
             type="text"
             {...register("title")}
+            placeholder="Title"
           />
           {errors.title && (
             <small className="text-danger">{errors.title?.message}</small>
@@ -84,25 +92,43 @@ function NewMeetupForm({ meetup }) {
           <Form.Control
             type="text"
             {...register("address")}
+            placeholder="Address"
           />
           {errors.address && (
             <small className="text-danger">{errors.address?.message}</small>
           )}
         </FloatingLabel>
 
+          <div className="d-flex justify-content-start gap-2">
+        <FloatingLabel
+        className="flex-grow-1 mb-2"
+          controlId="floatingCity"
+          label="City, State, Country"
+        >
+          <Form.Control
+            type="text"
+            {...register("city")}
+            placeholder="city, country"
+          />
+          {errors.city && (
+            <small className="text-danger">{errors.city?.message}</small>
+          )}
+        </FloatingLabel>
         <FloatingLabel
           controlId="floatingDateTime"
           label="Date"
           className="mb-2"
         >
           <Form.Control
-            type="datetime"
+            type="datetime-local"
             {...register("datetime")}
+            
           />
           {errors.datetime && (
             <small className="text-danger">{errors.datetime?.message}</small>
           )}
         </FloatingLabel>
+        </div>
 
         <FloatingLabel
           controlId="floatingImage"
@@ -112,6 +138,7 @@ function NewMeetupForm({ meetup }) {
           <Form.Control
             type="text"
             {...register("image")}
+            placeholder="Image"
           />
           {errors.image && (
             <small className="text-danger">{errors.image?.message}</small>
@@ -124,8 +151,9 @@ function NewMeetupForm({ meetup }) {
         >
           <Form.Control
             as="textarea"
-            style={{ height: "200px" }}
+            style={{ height: "150px" }}
             {...register("description")}
+            placeholder="Description"
           />
           {errors.description && (
             <small className="text-danger">{errors.description?.message}</small>
@@ -134,73 +162,25 @@ function NewMeetupForm({ meetup }) {
 
         <Stack
           direction="horizontal"
-          className="d-flex justify-content-end gap-0 mb-3 mt-4 border-start-0 border-end-0"
+          className={`${classes.actions} d-flex justify-content-end gap-0 mb-3 mt-2`}
         >
-          <Button
+          {meetup && (<Button
             as={Link}
-            href={`/`}
+            href={`/${meetup.id}`}
             variant="link"
-            className={classes.textWhite}
+            className="text-blue"
           >
             Cancel
-          </Button>
+          </Button>)}
           <Button
+          disabled={isSubmitting}
             type="submit"
-            variant="outline-light"
           >
-            Submit
+            {isSubmitting ? 'Submitting' : 'Submit'}
           </Button>
         </Stack>
     </form>
-    // <Card>
-    //   <form className={classes.form} action={meetup ? update : create}>
-    //     <input type="hidden" name="id" defaultValue={meetup ? meetup.id : ""} />
-    //     <div className={classes.control}>
-    //       <label htmlFor="title">Meetup Title</label>
-    //       <input
-    //         type="text"
-    //         required
-    //         id="title"
-    //         name="title"
-    //         defaultValue={meetup ? meetup.title : ""}
-    //       />
-    //     </div>
-    //     <div className={classes.control}>
-    //       <label htmlFor="image">Meetup Image</label>
-    //       <input
-    //         type="url"
-    //         required
-    //         id="image"
-    //         name="image"
-    //         defaultValue={meetup ? meetup.image : ""}
-    //       />
-    //     </div>
-    //     <div className={classes.control}>
-    //       <label htmlFor="address">Address</label>
-    //       <input
-    //         type="text"
-    //         required
-    //         id="address"
-    //         name="address"
-    //         defaultValue={meetup ? meetup.address : ""}
-    //       />
-    //     </div>
-    //     <div className={classes.control}>
-    //       <label htmlFor="description">Description</label>
-    //       <textarea
-    //         id="description"
-    //         required
-    //         rows="5"
-    //         name="description"
-    //         defaultValue={meetup ? meetup.description : ""}
-    //       ></textarea>
-    //     </div>
-
-    //     <div className={classes.actions}>
-    //       <button>{meetup ? "Update" : "Create"}</button>
-    //     </div>
-    //   </form>
-    // </Card>
+    </div>
   )
 }
 
