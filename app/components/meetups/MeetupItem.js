@@ -11,7 +11,7 @@ import Card from "react-bootstrap/Card"
 function MeetupItem({ meetup }) {
   const datetime = moment(meetup.datetime).format("YYYY/MM/DD HH:mm")
   return (
-    <Card className="text-white">
+    <Card className="text-white rounded-2">
       <Card.Img
         className="rounded-0"
         src={meetup.image}
