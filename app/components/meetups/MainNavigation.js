@@ -24,7 +24,7 @@ export default function MainNavigation() {
         </Link>
         <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="me-auto my-2 my-lg-0 text-end" navbarScroll>
+            <Nav className={`${classes.transparent} me-auto my-2 my-lg-0 text-end`} navbarScroll>
                  <Nav.Link eventKey="1" as={Link}
                   href="/#meetups"
                 >

@@ -84,7 +84,15 @@ a.text-blue{
   color: rgb(76, 184, 188) !important;
       }
 
+.navbar-collapse {
+    flex-grow: 0 !important;
+}
 
+@media (min-width: 992px) {
+.navbar-expand-lg {
+    justify-content: space-between !important;
+}
+}
 
 .navbar{
    --bs-navbar-toggler-focus-width: 0.1rem !important;
