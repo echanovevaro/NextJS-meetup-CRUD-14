@@ -104,12 +104,12 @@ function NewMeetupForm({ meetup }) {
         <FloatingLabel
         className="flex-grow-1 mb-2"
           controlId="floatingCity"
-          label="City, State, Country"
+          label="City"
         >
           <Form.Control
             type="text"
             {...register("city")}
-            placeholder="city, country"
+            placeholder="city"
           />
           {errors.city && (
             <small className="text-danger">{errors.city?.message}</small>

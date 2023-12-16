@@ -14,6 +14,7 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+      
   }
 }
 
@@ -75,4 +76,20 @@ a.text-blue:hover{
 
 a.text-blue{
   text-decoration: none;
+}
+
+
+.navbar-toggler, .navbar-toggler:focus, .navbar-toggler:active, .navbar-toggler:hover{
+  border: none !important;
+  color: rgb(76, 184, 188) !important;
+      }
+
+
+
+.navbar{
+   --bs-navbar-toggler-focus-width: 0.1rem !important;
+}
+
+.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
+    color: rgb(76, 184, 188) !important;
 }

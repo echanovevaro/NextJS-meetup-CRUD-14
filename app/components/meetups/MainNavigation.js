@@ -3,35 +3,43 @@
 import Link from "next/link"
 import classes from "./MainNavigation.module.css"
 import { usePathname } from "next/navigation"
-import React from "react" // Add missing import statement
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
 
 export default function MainNavigation() {
   const pathname = usePathname()
   return (
     <header className={classes.header}>
-      <div className={classes.headerContainer}>
+        <Navbar
+      collapseOnSelect
+      expand="lg"
+      variant="dark"
+      className={classes.headerContainer}
+    >
         <Link
           className={classes.logo}
           href="/"
         >
           Next14 Meetups
         </Link>
-        <nav className="d-flex gap-2">
-
-                <Link
+        <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav className="me-auto my-2 my-lg-0 text-end" navbarScroll>
+                 <Nav.Link eventKey="1" as={Link}
                   href="/#meetups"
-                  className={`${pathname === "/#meetups" ? classes.active : ""} `}
                 >
                   All meetups
-                </Link>
-                <Link
+                </Nav.Link>
+                <Nav.Link
+                eventKey="2"
+                as={Link}
                   href="/#new"
-                  className={`${pathname === "/#new" ? classes.active : ""} `}
                 >
                   Add new meetup
-                </Link>
-        </nav>
-      </div>
+                </Nav.Link>
+                </Nav>
+        </Navbar.Collapse>
+        </Navbar>
     </header>
   )
 }
