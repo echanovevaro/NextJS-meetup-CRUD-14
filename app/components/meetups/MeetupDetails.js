@@ -23,11 +23,11 @@ export default function MeetupDetails({ meetup }) {
       <div className={classes.content}>
         <h1 className="display-6">{meetup.title}</h1>
         <p className="fw-light">{meetup.description}</p>
-        <div className="d-flex justify-content-center align-items-center gap-2">
+        <div className="d-flex justify-content-center align-items-start gap-2">
           <p className="fw-lighter m-0 text-blue"><FontAwesomeIcon icon={faLocationDot}/></p>
         <p className="fw-lighter m-0">{meetup.address} {meetup.city}</p>
         </div>
-        <div className="d-flex justify-content-center align-items-center gap-2">
+        <div className="d-flex justify-content-center align-items-start gap-2">
         <p className="fw-lighter m-0 text-blue"><FontAwesomeIcon icon={faClock} /></p>
         <p className="fw-lighter m-0">{datetime}</p>
         </div>
