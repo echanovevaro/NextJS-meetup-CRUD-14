@@ -21,9 +21,14 @@
 }
 
 .actions button:hover,
-.actions button:active {
+.actions button:active,
+.actions button:focus,
+.actions button:visited,
+.actions button:disabled,
+.actions button:active:focus {
   background-color: rgb(76, 184, 188);
   color: var(--white);
+    border: 1px solid rgb(76, 184, 188);
 }
 
 .content {

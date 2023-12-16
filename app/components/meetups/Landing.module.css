@@ -41,7 +41,7 @@
   width: 100%;
 }
 
-.meetupsContent {
+.meetupsContent, .formContent {
   width: 80%;
 }
 
