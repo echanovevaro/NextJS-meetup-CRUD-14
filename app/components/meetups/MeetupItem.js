@@ -26,14 +26,11 @@ function MeetupItem({ meetup }) {
       >
         <h6 className="text-md fw-light">{meetup.title}</h6>
         <h6 className="hidden mb-1">
-                  <div className="d-flex justify-content-end align-items-start gap-2">
-          <p className="text-xs fw-lighter text-right m-0 text-blue"><FontAwesomeIcon icon={faClock}/></p>
-        <Card.Text className="text-xs fw-lighter text-right mb-0">{datetime}</Card.Text>
-        </div>
-        <div className="d-flex justify-content-end align-items-start gap-2">
-          <p className="text-xs fw-lighter text-right m-0 text-blue"><FontAwesomeIcon icon={faLocationDot}/></p>
-        <Card.Text className="text-xs fw-lighter text-right mb-0">{meetup.address} {meetup.city}</Card.Text>
-        </div>
+          
+        <Card.Text className="text-xs fw-lighter text-right mb-0"><span className="text-blue"><FontAwesomeIcon icon={faClock}/></span> &nbsp; {datetime}</Card.Text>
+
+        <Card.Text className="text-xs fw-lighter text-right mb-0"><span className="text-blue"><FontAwesomeIcon icon={faLocationDot}/></span> &nbsp; {meetup.address} {meetup.city}</Card.Text>
+
         </h6>
       </Card.ImgOverlay>
     </Card>

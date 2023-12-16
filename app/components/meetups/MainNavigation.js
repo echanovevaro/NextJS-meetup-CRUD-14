@@ -14,7 +14,7 @@ export default function MainNavigation() {
           className={classes.logo}
           href="/"
         >
-          Next 14 Meetups
+          Next14 Meetups
         </Link>
         <nav className="d-flex gap-2">
 

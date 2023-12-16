@@ -23,14 +23,9 @@ export default function MeetupDetails({ meetup }) {
       <div className={classes.content}>
         <h1 className="display-6">{meetup.title}</h1>
         <p className="fw-light">{meetup.description}</p>
-        <div className="d-flex justify-content-center align-items-start gap-2">
-          <p className="fw-lighter m-0 text-blue"><FontAwesomeIcon icon={faLocationDot}/></p>
-        <p className="fw-lighter m-0">{meetup.address} {meetup.city}</p>
-        </div>
-        <div className="d-flex justify-content-center align-items-start gap-2">
-        <p className="fw-lighter m-0 text-blue"><FontAwesomeIcon icon={faClock} /></p>
-        <p className="fw-lighter m-0">{datetime}</p>
-        </div>
+        <p className="fw-lighter m-0"><span className="text-blue"><FontAwesomeIcon icon={faLocationDot}/></span> &nbsp; {meetup.address} {meetup.city}</p>
+        <p className="fw-lighter m-0"><span className="text-blue"><FontAwesomeIcon icon={faClock} /></span> &nbsp; {datetime}</p>
+
         <div className={`${classes.actions} flex gap-2 justify-center`}>
           <DeleteMeetupForm id={meetup.id} />
           <NavigationButton path={`/${meetup.id}/update`}>
