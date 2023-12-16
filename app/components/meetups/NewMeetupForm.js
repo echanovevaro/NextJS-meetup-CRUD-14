@@ -14,11 +14,11 @@ import Button from "react-bootstrap/Button"
 import Link from "next/link"
 
 const meetupSchema = z.object({
-  title: z.string().min(10).max(100),
-  image: z.string().min(1).url(),
-  datetime: z.string().min(1).transform((str) => new Date(str).toISOString()),
-  address: z.string().min(10).max(100),
-  city: z.string().min(10).max(60),
+  title: z.string().min(6).max(100),
+  image: z.string().min(1, 'Required').url(),
+  datetime: z.string().min(1, 'Required').transform((str) => new Date(str).toISOString()),
+  address: z.string().min(6).max(100),
+  city: z.string().min(6).max(60),
   description: z.string().min(20).max(500),
 })
 
@@ -81,7 +81,7 @@ function NewMeetupForm({ meetup }) {
             placeholder="Title"
           />
           {errors.title && (
-            <small className="text-danger">{errors.title?.message}</small>
+            <small className="text-white">{errors.title?.message}</small>
           )}
         </FloatingLabel>
 
@@ -96,7 +96,7 @@ function NewMeetupForm({ meetup }) {
             placeholder="Address"
           />
           {errors.address && (
-            <small className="text-danger">{errors.address?.message}</small>
+            <small className="text-white">{errors.address?.message}</small>
           )}
         </FloatingLabel>
 
@@ -112,7 +112,7 @@ function NewMeetupForm({ meetup }) {
             placeholder="city"
           />
           {errors.city && (
-            <small className="text-danger">{errors.city?.message}</small>
+            <small className="text-white">{errors.city?.message}</small>
           )}
         </FloatingLabel>
         <FloatingLabel
@@ -126,7 +126,7 @@ function NewMeetupForm({ meetup }) {
             
           />
           {errors.datetime && (
-            <small className="text-danger">{errors.datetime?.message}</small>
+            <small className="text-white">{errors.datetime?.message}</small>
           )}
         </FloatingLabel>
         </div>
@@ -142,7 +142,7 @@ function NewMeetupForm({ meetup }) {
             placeholder="Image"
           />
           {errors.image && (
-            <small className="text-danger">{errors.image?.message}</small>
+            <small className="text-white">{errors.image?.message}</small>
           )}
         </FloatingLabel>
 
@@ -157,7 +157,7 @@ function NewMeetupForm({ meetup }) {
             placeholder="Description"
           />
           {errors.description && (
-            <small className="text-danger">{errors.description?.message}</small>
+            <small className="text-white">{errors.description?.message}</small>
           )}
         </FloatingLabel>
 

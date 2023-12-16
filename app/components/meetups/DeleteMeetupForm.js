@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { remove } from "@/app/services/actions"
 import { useState } from "react"
