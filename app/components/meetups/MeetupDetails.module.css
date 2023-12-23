@@ -21,6 +21,7 @@
   transition: all 0.3s ease-out;
 }
 .actions a {
+  text-decoration: none;
   color: var(--platinum);
   transition: all 0.3s ease-out;
 }

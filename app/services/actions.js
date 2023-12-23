@@ -23,12 +23,12 @@ export async function create(data) {
   })
   client.close()
   revalidatePath("/")
-  redirect("/")
+  redirect("#meetups")
 }
 
 export async function update(id, data) {
-  console.log('data',data)
-  "use server"
+  console.log("data", data)
+  ;("use server")
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
   )
