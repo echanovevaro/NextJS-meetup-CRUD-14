@@ -19,6 +19,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body className={`${roboto.className} antialiased`}>
+        <div id="modal" />
         <MainNavigation />
         <main className={classes.main}>{children}</main>
       </body>

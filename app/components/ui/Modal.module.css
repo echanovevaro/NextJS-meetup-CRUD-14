@@ -1,0 +1,24 @@
+.customModal {
+  margin: 0;
+  padding: 1rem;
+  position: fixed;
+  top: 20vh;
+  left: calc(50% - 35%);
+  width: 70%;
+  max-height: 80vh;
+  border: none;
+  border-radius: 6px;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  text-align: center;
+}
+
+.backdrop {
+  height: 100vh;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9;
+}
