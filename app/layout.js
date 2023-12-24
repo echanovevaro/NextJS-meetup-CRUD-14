@@ -13,6 +13,11 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head>
         <title>Meetups CRUD</title>
+        <link
+          rel="icon"
+          type="image/x-icon"
+          href="/favicon.ico"
+        />
         <meta
           name="description"
           content="CRUD de meetups con nextJS 14"
