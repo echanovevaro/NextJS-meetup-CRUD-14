@@ -20,7 +20,9 @@ export default function MeetupDetails({ meetup }) {
     <>
       {isDeleting && (
         <Modal onClose={() => setIsDeleting(false)}>
-          <p>Are you sure you want to delete this meetup?</p>
+          <h5 className="mt-2 mb-0">
+            Are you sure you want to delete this meetup?
+          </h5>
           <div
             className={`${classes.actions} flex gap-3 justify-center align-items-center`}
           >
