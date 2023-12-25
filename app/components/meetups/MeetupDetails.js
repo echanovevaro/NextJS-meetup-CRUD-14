@@ -24,7 +24,7 @@ export default function MeetupDetails({ meetup }) {
             Are you sure you want to delete this meetup?
           </h5>
           <div
-            className={`${classes.actions} flex gap-3 justify-center align-items-center`}
+            className={`${classes.actions} ${classes.actionsEnd} flex gap-2 justify-end align-items-center`}
           >
             <button
               className={classes.linkButton}

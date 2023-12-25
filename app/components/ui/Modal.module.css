@@ -1,16 +1,23 @@
-.customModal {
-  margin: 0;
-  padding: 1rem;
+.dialogContainer {
+  margin: 1rem;
   position: fixed;
-  top: 20vh;
-  left: calc(50% - 30%);
-  width: 60%;
-  max-height: 80vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+.customModal {
+  padding: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 0;
   border: none;
   border-radius: 6px;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  text-align: center;
 }
 
 .backdrop {

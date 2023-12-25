@@ -9,12 +9,14 @@ export default function Modal({ children, onClose }) {
         className={classes.backdrop}
         onClick={onClose}
       ></div>
-      <dialog
-        open
-        className={classes.customModal}
-      >
-        {children}
-      </dialog>
+      <div className={classes.dialogContainer}>
+        <dialog
+          open
+          className={classes.customModal}
+        >
+          {children}
+        </dialog>
+      </div>
     </>,
     document.getElementById("modal")
   )

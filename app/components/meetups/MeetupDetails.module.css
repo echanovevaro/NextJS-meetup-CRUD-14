@@ -9,6 +9,11 @@
   padding: 1rem;
   text-align: center;
 }
+.actions.actionsEnd {
+  padding: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 .actions button {
   font: inherit;
@@ -22,20 +27,23 @@
 }
 .actions a {
   text-decoration: none;
-  color: var(--platinum);
+  color: rgb(76, 184, 188);
   transition: all 0.3s ease-out;
+}
+.actions a:hover {
+  color: var(--platinum);
 }
 
 .linkButton {
-  color: var(--black) !important;
+  color: rgb(76, 184, 188);
   background-color: transparent !important;
   border: none !important;
   margin: 0 !important;
   padding: 0 !important;
 }
-.actions a:hover,
-.linkButton:hover {
-  color: rgb(76, 184, 188);
+
+.actions button.linkButton:hover {
+  color: black;
 }
 .actions button:hover,
 .actions button:active,
