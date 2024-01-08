@@ -15,15 +15,18 @@ import Link from "next/link"
 
 const meetupSchema = z.object({
   title: z.string().min(6).max(100),
-  image: z.string().min(1, 'Required').url(),
-  datetime: z.string().min(1, 'Required').transform((str) => new Date(str).toISOString()),
+  image: z.string().min(1, "Required").url(),
+  datetime: z
+    .string()
+    .min(1, "Required")
+    .transform((str) => new Date(str).toISOString()),
   address: z.string().min(6).max(100),
   city: z.string().min(6).max(60),
   description: z.string().min(20).max(500),
 })
 
 function NewMeetupForm({ meetup }) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false)
   let defaultDateTime = meetup?.datetime ? new Date(meetup.datetime) : null
   defaultDateTime?.setHours(defaultDateTime.getHours() + 1)
 
@@ -31,13 +34,13 @@ function NewMeetupForm({ meetup }) {
     register,
     handleSubmit,
     reset,
-    formState: { errors }
+    formState: { errors },
   } = useForm({
     resolver: zodResolver(meetupSchema),
     defaultValues: {
       title: meetup?.title || "",
       image: meetup?.image || "",
-      datetime: defaultDateTime?.toISOString().split('.')[0] || "",
+      datetime: defaultDateTime?.toISOString().split(".")[0] || "",
       address: meetup?.address || "",
       city: meetup?.city || "",
       description: meetup?.description || "",
@@ -45,22 +48,19 @@ function NewMeetupForm({ meetup }) {
   })
 
   async function onSubmit(data) {
-    setIsSubmitting(true);
+    setIsSubmitting(true)
 
     if (meetup) {
       await update(meetup.id, data)
     } else {
       await create(data)
-      reset();
-      setIsSubmitting(false);
+      reset()
+      setIsSubmitting(false)
     }
-
-    
   }
   return (
     <div className="form-content">
-    <form onSubmit={handleSubmit(onSubmit)}>
-
+      <form onSubmit={handleSubmit(onSubmit)}>
         {Object.keys(errors).length > 0 && (
           <Alert
             variant="danger"
@@ -100,35 +100,34 @@ function NewMeetupForm({ meetup }) {
           )}
         </FloatingLabel>
 
-          <div className="d-flex justify-content-start gap-2">
-        <FloatingLabel
-        className="flex-grow-1 mb-2"
-          controlId="floatingCity"
-          label="City"
-        >
-          <Form.Control
-            type="text"
-            {...register("city")}
-            placeholder="city"
-          />
-          {errors.city && (
-            <small className="text-white">{errors.city?.message}</small>
-          )}
-        </FloatingLabel>
-        <FloatingLabel
-          controlId="floatingDateTime"
-          label="Date"
-          className="mb-2"
-        >
-          <Form.Control
-            type="datetime-local"
-            {...register("datetime")}
-            
-          />
-          {errors.datetime && (
-            <small className="text-white">{errors.datetime?.message}</small>
-          )}
-        </FloatingLabel>
+        <div className="d-flex justify-content-start gap-2">
+          <FloatingLabel
+            className="flex-grow-1 mb-2"
+            controlId="floatingCity"
+            label="City"
+          >
+            <Form.Control
+              type="text"
+              {...register("city")}
+              placeholder="city"
+            />
+            {errors.city && (
+              <small className="text-white">{errors.city?.message}</small>
+            )}
+          </FloatingLabel>
+          <FloatingLabel
+            controlId="floatingDateTime"
+            label="Date"
+            className="mb-2"
+          >
+            <Form.Control
+              type="datetime-local"
+              {...register("datetime")}
+            />
+            {errors.datetime && (
+              <small className="text-white">{errors.datetime?.message}</small>
+            )}
+          </FloatingLabel>
         </div>
 
         <FloatingLabel
@@ -165,22 +164,24 @@ function NewMeetupForm({ meetup }) {
           direction="horizontal"
           className={`${classes.actions} d-flex justify-content-end gap-0 mb-3 mt-2`}
         >
-          {meetup && (<Button
-            as={Link}
-            href={`/${meetup.id}`}
-            variant="link"
-            className="text-blue"
-          >
-            Cancel
-          </Button>)}
+          {meetup && (
+            <Button
+              as={Link}
+              href={`/${meetup.id}`}
+              variant="link"
+              className="text-blue"
+            >
+              Cancel
+            </Button>
+          )}
           <Button
-          disabled={isSubmitting}
+            disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? 'Submitting' : 'Submit'}
+            {isSubmitting ? "Submitting" : "Submit"}
           </Button>
         </Stack>
-    </form>
+      </form>
     </div>
   )
 }

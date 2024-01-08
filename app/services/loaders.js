@@ -8,7 +8,7 @@ export async function getAll() {
   )
   const data = await collection.find().toArray()
   const response = []
-  data.map((meetup) =>
+  data.reverse().map((meetup) =>
     response.push({
       id: meetup._id.toString(),
       title: meetup.title,

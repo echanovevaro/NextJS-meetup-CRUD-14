@@ -11,6 +11,7 @@ import useHash from "../hooks/useHash"
 
 export default function Landing({ meetups }) {
   const hash = useHash()
+  console.log("hash", hash)
 
   if (hash) {
     const element = document.getElementById(hash)
@@ -27,19 +28,21 @@ export default function Landing({ meetups }) {
             <Carousel.Item>
               <Link
                 className="stretched-link"
-                href={`/${meetups[0]?.id}`}
+                href={`/${meetups[meetups.length - 1]?.id}`}
               />
               <Image
-                src={meetups[0]?.image}
-                alt={meetups[0]?.title}
+                src={meetups[meetups.length - 1]?.image}
+                alt={meetups[meetups.length - 1]?.title}
                 fluid
                 className={classes.carouselImg}
               />
               <Carousel.Caption>
                 <div className={classes.caption}>
-                  <h3 className="fw-light">{meetups[0]?.title}</h3>
+                  <h3 className="fw-light">
+                    {meetups[meetups.length - 1]?.title}
+                  </h3>
                   <p className={`${classes.description} fw-lighter`}>
-                    {meetups[0].description}
+                    {meetups[meetups.length - 1].description}
                   </p>
                 </div>
               </Carousel.Caption>
@@ -49,19 +52,21 @@ export default function Landing({ meetups }) {
             <Carousel.Item>
               <Link
                 className="stretched-link"
-                href={`/${meetups[1]?.id}`}
+                href={`/${meetups[meetups.length - 2]?.id}`}
               />
               <Image
-                src={meetups[1]?.image}
-                alt={meetups[1]?.title}
+                src={meetups[meetups.length - 2]?.image}
+                alt={meetups[meetups.length - 2]?.title}
                 fluid
                 className={classes.carouselImg}
               />
               <Carousel.Caption>
                 <div className={classes.caption}>
-                  <h3 className="fw-light">{meetups[1]?.title}</h3>
+                  <h3 className="fw-light">
+                    {meetups[meetups.length - 2]?.title}
+                  </h3>
                   <p className={`${classes.description} fw-lighter`}>
-                    {meetups[1].description}
+                    {meetups[meetups.length - 2].description}
                   </p>
                 </div>
               </Carousel.Caption>
@@ -71,19 +76,21 @@ export default function Landing({ meetups }) {
             <Carousel.Item>
               <Link
                 className="stretched-link"
-                href={`/${meetups[2]?.id}`}
+                href={`/${meetups[meetups.length - 3]?.id}`}
               />
               <Image
-                src={meetups[2]?.image}
-                alt={meetups[2]?.title}
+                src={meetups[meetups.length - 3]?.image}
+                alt={meetups[meetups.length - 3]?.title}
                 fluid
                 className={classes.carouselImg}
               />
               <Carousel.Caption>
                 <div className={classes.caption}>
-                  <h3 className="fw-light">{meetups[2]?.title}</h3>
+                  <h3 className="fw-light">
+                    {meetups[meetups.length - 3]?.title}
+                  </h3>
                   <p className={`${classes.description} fw-lighter`}>
-                    {meetups[2].description}
+                    {meetups[meetups.length - 3].description}
                   </p>
                 </div>
               </Carousel.Caption>

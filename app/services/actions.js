@@ -11,7 +11,7 @@ export async function create(data) {
   const [collection, client] = await connectToCollection(
     MONGO_COLLECTION_MEETUPS
   )
-  await collection.insertOne({
+  const newItem = await collection.insertOne({
     title: data.title,
     image: data.image,
     address: data.address,
@@ -23,7 +23,7 @@ export async function create(data) {
   })
   client.close()
   revalidatePath("/")
-  redirect("#meetups")
+  redirect(`/${newItem.insertedId.toString()}`)
 }
 
 export async function update(id, data) {
