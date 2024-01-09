@@ -54,8 +54,8 @@ function NewMeetupForm({ meetup }) {
       await update(meetup.id, data)
     } else {
       await create(data)
-      reset()
-      setIsSubmitting(false)
+      // reset()
+      // setIsSubmitting(false)
     }
   }
   return (

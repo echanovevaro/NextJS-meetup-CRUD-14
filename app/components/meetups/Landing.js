@@ -109,7 +109,7 @@ export default function Landing({ meetups }) {
           <MeetupList meetups={meetups} />
         </div>
       </div>
-      <div
+      {/* <div
         className={classes.formContainer}
         id="new"
       >
@@ -121,7 +121,7 @@ export default function Landing({ meetups }) {
         </p>
 
         <NewMeetupForm />
-      </div>
+      </div> */}
     </>
   )
 }

@@ -23,7 +23,7 @@ export async function create(data) {
   })
   client.close()
   revalidatePath("/")
-  redirect(`/${newItem.insertedId.toString()}`)
+  redirect("/#meetups")
 }
 
 export async function update(id, data) {
