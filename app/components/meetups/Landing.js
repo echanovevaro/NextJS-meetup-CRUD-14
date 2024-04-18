@@ -25,7 +25,7 @@ export default function Landing({ meetups }) {
       <div className={classes.carouselContainer}>
         <Carousel>
           {meetups?.length > 0 && (
-            <Carousel.Item>
+            <Carousel.Item interval={2000}>
               <Link
                 className="stretched-link"
                 href={`/${meetups[meetups.length - 1]?.id}`}
@@ -49,7 +49,7 @@ export default function Landing({ meetups }) {
             </Carousel.Item>
           )}
           {meetups?.length > 1 && (
-            <Carousel.Item>
+            <Carousel.Item interval={2000}>
               <Link
                 className="stretched-link"
                 href={`/${meetups[meetups.length - 2]?.id}`}
@@ -73,7 +73,7 @@ export default function Landing({ meetups }) {
             </Carousel.Item>
           )}
           {meetups?.length > 2 && (
-            <Carousel.Item>
+            <Carousel.Item interval={2000}>
               <Link
                 className="stretched-link"
                 href={`/${meetups[meetups.length - 3]?.id}`}
